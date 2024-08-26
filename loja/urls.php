@@ -6,6 +6,8 @@ $uri_handler = [
     "/loja/" => ""
 ]
 
+
+//main
 if ( @$_POST['username'] && @!$_COOKIE['username']){
   $nome = $_POST['username'];
   $nome_cookie = $_COOKIE['username'];
@@ -27,4 +29,6 @@ if (@$_COOKIE['username']){
 else{
 require "templates/login.html";
 }
+
+//abaixo codigos referentes ao redirecionamento
 ?>
