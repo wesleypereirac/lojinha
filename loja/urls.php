@@ -20,4 +20,11 @@ if ( @$_POST['username'] && @!$_COOKIE['username']){
   exit();
 }
 
+if (@$_COOKIE['username']){
+  require "templates/index.html";
+  echo "<br><br>bem vindo (a), ", $_COOKIE['username'];
+}
+else{
+require "templates/login.html";
+}
 ?>
