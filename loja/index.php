@@ -26,11 +26,5 @@ function criar_cadastro($nome, $senha, $tipo="normal"){
         
 }
 
-if (@$_COOKIE['username']){
-  require "templates/index.html";
-  echo "<br><br>bem vindo (a), ", $_COOKIE['username'];
-}
-else{
-require "templates/login.html";
-}
+
 ?>
