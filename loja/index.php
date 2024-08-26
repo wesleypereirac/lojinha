@@ -1,0 +1,49 @@
+<?php
+print_r("URI: ".$_SERVER['REQUEST_URI']);
+include "urls.php";
+
+if ( @$_POST['username'] && @!$_COOKIE['username']){
+  $nome = $_POST['username'];
+  $nome_cookie = $_COOKIE['username'];
+  $senha = $_POST['password'];
+  $tipo = (isset($_POST['type'])) ? $_POST['type'] : "normal";
+
+  setcookie('username', $nome);
+  criar_cadastro($nome, $senha, $tipo);
+  header("Location: index.php");
+  //indica local de redirecionamento
+
+  exit();
+}
+function criar_cadastro($nome, $senha, $tipo="normal"){
+
+          $jsonData = file_get_contents("db_cadastros.json");
+          $db = json_decode($jsonData, true);
+          if ($db === null) {
+            die("Erro ao decodificar o JSON.");
+        }
+        $id_ultimo = ($db["last"] == null) ? $db["last"] : null;
+    
+        // Adiciona o novo cadastro
+        $db[$id_ultimo + 1] = [
+            "name" => $nome,
+            "password" => $senha,
+            "type" => $tipo,
+        ];
+        
+        // Atualiza o último ID
+        $db["last"] = $id_ultimo + 1;
+        $jsonData = json_encode($db, JSON_PRETTY_PRINT);
+        file_put_contents("db_cadastros.json", $jsonData);
+        return;
+        
+}
+
+if (@$_COOKIE['username']){
+  require "templates/index.html";
+  echo "<br><br>bem vindo (a), ", $_COOKIE['username'];
+}
+else{
+require "templates/login.html";
+}
+?>
