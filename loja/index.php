@@ -1,7 +1,7 @@
 <?php
 include "urls.php";
 
-
+"linha adicionada pelo github";
 function criar_cadastro($nome, $senha, $tipo="normal"){
 
           $jsonData = file_get_contents("db_cadastros.json");
