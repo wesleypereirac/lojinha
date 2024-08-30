@@ -26,9 +26,8 @@ function login_handler(){
 
 function create_login(){
 
-        $nome = $_POST['username'];
-        $nome_cookie = $_COOKIE['username'];
-        $senha = $_POST['password'];
+        $nome = @$_POST['username'];
+        $senha = @$_POST['password'];
         $tipo = (isset($_POST['type'])) ?   $_POST['type'] : "normal";
 
         setcookie('username', $nome);

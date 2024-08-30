@@ -4,7 +4,7 @@ include "urls.php";
 "linha adicionada pelo github";
 function criar_cadastro($nome, $senha, $tipo="normal"){
 
-          $jsonData = file_get_contents("db_cadastros.json");
+          $jsonData = file_get_contents("databases/db_cadastros.json");
           $db = json_decode($jsonData, true);
           if ($db === null) {
             die("Erro ao decodificar o JSON.");
