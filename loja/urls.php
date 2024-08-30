@@ -3,14 +3,20 @@ $current_uri = $_SERVER["REQUEST_URI"];
 
 
 $uri_handler = [
-    "/loja/" => login_handler(),
-    "/loja/post/" => create_login()
-];
+    "/" => 'login_handler',
+    "/?post=1" => 'create_login'];
 
-//$uri_handler[$current_uri];
-echo "$current_uri";
+
+//checa a uri
+if (isset($uri_handler[$current_uri])){
+    $handler = $uri_handler[$current_uri];
+    call_user_func($handler);
+}else {
+    echo "Pagina nao encontrada";
+}
+
+
 //funções
-
 function login_handler(){
     
 
