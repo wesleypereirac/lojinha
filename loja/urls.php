@@ -7,7 +7,7 @@ $uri_handler = [
     "/loja/post/" => create_login()
 ];
 
-$uri_handler[$current_uri];
+//$uri_handler[$current_uri];
 echo "$current_uri";
 //funções
 

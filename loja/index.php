@@ -21,7 +21,7 @@ function criar_cadastro($nome, $senha, $tipo="normal"){
         // Atualiza o último ID
         $db["last"] = $id_ultimo + 1;
         $jsonData = json_encode($db, JSON_PRETTY_PRINT);
-        file_put_contents("db_cadastros.json", $jsonData);
+        file_put_contents("templates/db_cadastros.json", $jsonData);
         return;
         
 }
